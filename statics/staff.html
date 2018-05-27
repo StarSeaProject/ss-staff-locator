@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星之海Staff寻找工具 Staff端</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=81173fe7ceb221967dd32891d25380d6"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button class="waves-effect waves-light btn modal-trigger" href="#staffModal">开始emit位置</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l12 debugBox">
+                <pre id="staffLog"></pre>
+                <pre id="sysLog"></pre>
+            </div>
+        </div>
+    </div>
+    <div id="staffModal" class="modal">
+        <div class="modal-content">
+            <h4>进入Staff模式</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="nameInput" type="text" class="validate">
+                        <label for="name">姓名</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <a class="waves-effect waves-light btn" id="stfSubmitBtn">提交</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        M.Modal.init(document.querySelectorAll('.modal'));
+    });
+    const socket = io();
+    var markers = new Array();
+    var clientMarker;
+</script>
+<script src="./assets/js/events/geolocation.js"></script>
+<script src="./assets/js/sockets/getLocation.js"></script>
+<script src="./assets/js/sockets/sendLocation.js"></script>
+<script src="./assets/js/events/staffMode.js"></script>
+<script src="./assets/js/events/nameController.js"></script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星之海Staff寻找工具</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=81173fe7ceb221967dd32891d25380d6"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <button class="btn" onclick="clientMode()">启动(需要位置/GPS权限)</button>
+            </div>
+            <div class="col s12">
+                <button class="btn" onclick="map.setFitView()">无法找到标记?适应标记点</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12 m12 s12">
+            <div id="map"></div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    const socket = io();
+    const map = new AMap.Map('map', {
+        resizeEnable: true,
+        zoom: 11,
+        center: [116.397428, 39.90923]
+    });
+    const markers = new Array();
+    var clientMarker;
+</script>
+<script src="./assets/js/events/geolocation.js"></script>
+<script src="./assets/js/maps/marker.js"></script>
+<script src="./assets/js/sockets/getLocation.js"></script>
+<script src="./assets/js/events/clientMode.js"></script>
+
+</html>
