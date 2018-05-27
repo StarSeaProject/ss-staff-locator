@@ -1,3 +1,7 @@
+/**
+ * 客户端模式
+ * @requires getLocation
+ */
 function clientMode() {
 
     checkGeolocation();

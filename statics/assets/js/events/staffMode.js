@@ -1,3 +1,9 @@
+/**
+ * Staff模式
+ * @requires sendLocation
+ * @requires getLocation
+ * @param {String} name staff名字 
+ */
 function staffMode(name) {
 
     checkGeolocation();
@@ -13,8 +19,8 @@ function staffMode(name) {
             var log = staff.setStaffLocation(geolocation);
             var element = document.getElementById("staffLog");
             var sysLog = document.getElementById('sysLog');
-            sysLog.innerHTML = JSON.stringify(client.getStaffLocation(),null,2);
-            element.innerHTML = JSON.stringify(log,null,2)+"<br>";
+            sysLog.innerHTML = JSON.stringify(client.getStaffLocation(), null, 2);
+            element.innerHTML = JSON.stringify(log, null, 2) + "<br>";
             element.scrollTop = element.scrollHeight;
         })
     }

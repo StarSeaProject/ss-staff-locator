@@ -1,13 +1,14 @@
-.debugBox{
+.debugBox {
     overflow: scroll;
     height: 85vh;
     width: 100%;
 }
+
 #map {
     height: 75vh;
     width: 100%;
 }
 
-.col{
+.col {
     margin-top: 5px;
 }

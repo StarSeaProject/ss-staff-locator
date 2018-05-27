@@ -1,8 +1,15 @@
 const scope = require('./scope');
 const findArr = require('../helpers/findObjInArr');
 module.exports = io => {
+    /**
+     * WS Event
+     */
     io.on('connection', (socket) => {
         scope.cureentConnection++;
+        /**
+         * Staff地理位置更新
+         * @returns {Object} 广播本地内存Scope
+         */
         socket.on('staff location update', (data) => {
             var data = JSON.parse(data);
             var index = findArr(scope.staffList, 'sid', data.sid);
@@ -15,7 +22,10 @@ module.exports = io => {
             }
             io.emit('location update', scope);
         })
-
+        /**
+         * Staff进入
+         * @returns {string} Socket ID 
+         */
         socket.on('staff join', (data) => {
             var data = JSON.parse(data)
             scope.staffList.push({
@@ -27,7 +37,10 @@ module.exports = io => {
                 sid: socket.conn.id
             })
         })
-
+        /**
+         * WS断开链接
+         * @returns {Socket} 断开Staff的Socket ID
+         */
         socket.on('disconnect', () => {
             scope.cureentConnection--;
             var index = findArr(scope.staffList, 'sid', socket.conn.id);
