@@ -11,7 +11,8 @@ function checkGeolocation() {
             alert('启动成功');
             return true;
         }, (err) => {
-            alert('无法启动');
+            alert('无法启动\n'+"错误代码:"+err.code+"错误消息:"+err.message);
+            console.error(err);
             return false;
         })
     }
