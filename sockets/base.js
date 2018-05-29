@@ -18,7 +18,10 @@ module.exports = io => {
             }
             scope.staffList[index] = { ...scope.staffList[index],
                 ...data,
-                locationInfo: true
+            }
+            if(data.location&& scope.staffList[index].locationInfo === false){
+                scope.staffList[index].locationInfo = true;
+                io.emit('staff init join', scope);
             }
             io.emit('location update', scope);
         })

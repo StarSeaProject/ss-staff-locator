@@ -4,7 +4,9 @@
  */
 function clientMode() {
 
-    checkGeolocation();
+    const bootBtn = document.getElementById('bootBtn')
+
+    checkGeolocation(bootBtn);
 
     const client = new getLocation();
     addClientMarker(0, 0);
@@ -19,9 +21,19 @@ function clientMode() {
                     addStaffMarker(0, 0, log.staffList[i].name, log.staffList[i].sid);
                 }
                 if (markers[i] && log.staffList[i].sid == markers[i].getExtData().sid && log.staffList[i].locationInfo) {
-                    updateMarker(log.staffList[i].location.longitude, log.staffList[i].location.latitude, i, log.staffList[i].sid);
+                    updateMarker(
+                        log.staffList[i].location.longitude,
+                        log.staffList[i].location.latitude,
+                        i,
+                        log.staffList[i].name,
+                        log.staffList[i].sid,
+                        log.staffList[i].lastUpdate,
+                        log.staffList[i].location.accuracy
+                    );
                 }
-                markers[i].setMap(map);
+                if (map) {
+                    markers[i].setMap(map);
+                }
             }
         })
     }

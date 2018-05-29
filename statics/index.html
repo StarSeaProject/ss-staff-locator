@@ -12,17 +12,24 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=81173fe7ceb221967dd32891d25380d6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js" integrity="sha256-s+WKpPgygjG4qcMXgG1xN5xR0N6yzpdh70gPVNR3/Vs=" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
+            <div class="col">
+                <span>状态:</span><span id="status" class="badge">未运行</span>
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12">
-                <button class="btn" onclick="clientMode()">启动(需要位置/GPS权限)</button>
+                <button class="btn" id="bootBtn" onclick="clientMode()">启动(需要位置/GPS权限)</button>
             </div>
             <div class="col s12">
-                <button class="btn" onclick="map.setFitView()">无法找到标记?适应标记点</button>
+                <button class="btn" id="fitViewBtn" style="display: none;" onclick="map.setFitView()">无法找到标记?适应标记点</button>
             </div>
         </div>
     </div>

@@ -12,6 +12,8 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=81173fe7ceb221967dd32891d25380d6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js" integrity="sha256-s+WKpPgygjG4qcMXgG1xN5xR0N6yzpdh70gPVNR3/Vs=" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
@@ -19,7 +21,34 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button class="waves-effect waves-light btn modal-trigger" href="#staffModal">开始emit位置</button>
+                <span>状态:</span>
+                <span id="status" class="badge">未运行</span>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <h5 id="warning-text">请保持此页面在最前运行，若发现自己的坐标未更新，请刷新重试!</h3>
+            </div>
+        </div>
+        <div class="row" id="statusRow">
+            <div class="col s4 l4 m4">
+                <span>最后更新于:
+                    <span id="lastUpdate">无数据</span>
+                </span>
+            </div>
+            <div class="col s4 l4 m4">
+                <span>Staff姓名:
+                    <span id="stfName">无数据</span>
+            </div>
+            <div class="col s4 l4 m4">
+                <span>Socket ID:
+                    <p id="socketId" style="display: inline;">无数据</p>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="waves-effect waves-light btn modal-trigger" href="#staffModal" id="bootBtn">开始发送位置</button>
             </div>
         </div>
         <div class="row">
