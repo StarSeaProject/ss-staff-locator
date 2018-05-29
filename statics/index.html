@@ -12,8 +12,10 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.6&key=81173fe7ceb221967dd32891d25380d6"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js" integrity="sha256-s+WKpPgygjG4qcMXgG1xN5xR0N6yzpdh70gPVNR3/Vs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js" integrity="sha256-L3S3EDEk31HcLA5C6T2ovHvOcD80+fgqaCDt2BAi92o="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/locale/zh-cn.js" integrity="sha256-s+WKpPgygjG4qcMXgG1xN5xR0N6yzpdh70gPVNR3/Vs="
+        crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
@@ -21,7 +23,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span>状态:</span><span id="status" class="badge">未运行</span>
+                <span>状态:</span>
+                <span id="status" class="badge">未运行</span>
             </div>
         </div>
         <div class="row">
@@ -32,12 +35,29 @@
                 <button class="btn" id="fitViewBtn" style="display: none;" onclick="map.setFitView()">无法找到标记?适应标记点</button>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col l12 m12 s12">
-            <div id="map"></div>
+        <div class="row">
+            <div class="col l12 m12 s12">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
+    <div class="overlay">
+        <div class="content">
+            <h2>正在加载中...</h2>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -51,6 +71,7 @@
     var clientMarker;
 </script>
 <script src="./assets/js/events/geolocation.js"></script>
+<script src="./assets/js/events/loadingController.js"></script>
 <script src="./assets/js/maps/marker.js"></script>
 <script src="./assets/js/sockets/getLocation.js"></script>
 <script src="./assets/js/events/clientMode.js"></script>

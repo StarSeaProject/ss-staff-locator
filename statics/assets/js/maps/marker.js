@@ -51,7 +51,7 @@ function addClientMarker(lng, lat) {
 function updateMarker(lng, lat, index,name, sid, lastUpdate, accur) {
     markers[index].setPosition([lng, lat]);
     markers[index].setLabel({
-        content: `Staff:${name}<br>位置更新于:${moment(lastUpdate).fromNow()}<br>精度:${Math.floor(accur)}`
+        content: "Staff:"+name+"<br>位置更新于:"+moment(lastUpdate).fromNow()+"<br>精度:"+Math.floor(accur)
     })
 }
 /**

@@ -4,21 +4,24 @@
  */
 function clientMode() {
 
-    const bootBtn = document.getElementById('bootBtn')
-
+    var bootBtn = document.getElementById('bootBtn')
+    enableOverlayLoader();
     checkGeolocation(bootBtn);
 
-    const client = new getLocation();
+    var client = new getLocation();
     addClientMarker(0, 0);
     setInterval(update, 1000);
 
     function update() {
-        navigator.geolocation.getCurrentPosition(geolocation => {
+        navigator.geolocation.getCurrentPosition(function (geolocation) {
             var log = client.getStaffLocation();
             updateClientMarker(geolocation.coords.longitude, geolocation.coords.latitude);
+            disableOverlayLoader();
             for (var i = 0; i < log.staffList.length; i++) {
                 if (!markers[i] || log.staffList[i].sid !== markers[i].getExtData().sid) {
-                    addStaffMarker(0, 0, log.staffList[i].name, log.staffList[i].sid);
+                    if(log.staffList[i].locationInfo){
+                        addStaffMarker(0, 0, log.staffList[i].name, log.staffList[i].sid);
+                    }
                 }
                 if (markers[i] && log.staffList[i].sid == markers[i].getExtData().sid && log.staffList[i].locationInfo) {
                     updateMarker(

@@ -6,18 +6,19 @@
  */
 function staffMode(name) {
 
+    enableOverlayLoader();
     checkGeolocation();
 
-    const staff = new sendLocation({
+    var staff = new sendLocation({
         name
     });
-    const client = new getLocation();
+    var client = new getLocation();
 
-    const lastUpdate = document.getElementById('lastUpdate');
-    const stfName = document.getElementById('stfName');
-    const socketId = document.getElementById('socketId');
+    var lastUpdate = document.getElementById('lastUpdate');
+    var stfName = document.getElementById('stfName');
+    var socketId = document.getElementById('socketId');
 
-    const warningText = document.getElementById('warning-text');
+    var warningText = document.getElementById('warning-text');
 
     setInterval(update, 1000);
 
@@ -38,7 +39,7 @@ function staffMode(name) {
     }
 
     function update() {
-        navigator.geolocation.getCurrentPosition(geolocation => {
+        navigator.geolocation.getCurrentPosition(function(geolocation){
             var log = staff.setStaffLocation(geolocation);
             var server = client.getStaffLocation();
             var element = document.getElementById("staffLog");
@@ -50,6 +51,7 @@ function staffMode(name) {
                     lastUpdate.innerHTML = moment(server.staffList[index].lastUpdate).fromNow();
                     stfName.innerHTML = server.staffList[index].name;
                     socketId.innerHTML = server.staffList[index].sid;
+                    disableOverlayLoader();
                 }
             }
 

@@ -12,3 +12,25 @@
 .col {
     margin-top: 5px;
 }
+
+.overlay{
+    display: none;
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.7); /* Black fallback color */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    margin: 0 auto;
+}
+.overlay > .content {
+    top: 25%; /* 25% from the top */
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1000;
+}
